@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Covid-19 report</title>
+
+    <!-- bootstrap 4 css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- google font -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    <!-- custom css -->
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Covid-19 Reports</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mr-sm-2" href="datatable.html">Data Table</a>
+                </li>
+
+
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Modal -->
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <center>
+                    <h3></h3>World's stats</h3>
+                </center>
+                <canvas id="polarArea"></canvas>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container-fluid mt-3">
+        <!-- jumbotron -->
+        <div class="jumbotron jumbotron-fluid bg-dark text-white">
+            <div class="container-fluid">
+                <h1 class="display-5">
+                    <center id="error">Covid-19 report</center>
+                </h1>
+                <center>
+                    <input type="text" id="searchTerm" class="form-control" required aria-required="true"
+                        placeholder="Search by Country , ex : Morocco">
+                    <button type="button" class="btn btn-info mt-3" id="searchBtn">Search</button>
+
+
+                </center>
+            </div>
+            <div class="container mt-1">
+                <div class="table-responsive">
+
+                    <table class="table table-bordered table-dark " id="totaldata">
+                        <center>
+                            <h4>World Wide statistics</h4>
+
+                        </center>
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Active</th>
+                                <th scope="col">Confirmed</th>
+                                <th scope="col">Recovered</th>
+                                <th scope="col">Deaths</th>
+                                <th scope="col">Updated</th>
+
+                            </tr>
+                        </thead>
+                        <tbody class="totaldata">
+
+                        </tbody>
+                    </table>
+
+                    <center><button type="button" class="btn bg-transparent" data-toggle="modal"
+                            data-target=".bd-example-modal-lg ">📊</button>
+                        <p>👆Open graph☝️</p>
+                    </center>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- responsive table -->
+        <div class="table-responsive" id="dvData">
+            <table class="table table-bordered table-dark" id="myTable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Country</th>
+                        <th scope="col">Active</th>
+                        <th scope="col">Confirmed</th>
+                        <th scope="col">Recovered</th>
+                        <th scope="col">Deaths</th>
+                        <th scope="col">Last Update</th>
+
+                    </tr>
+                </thead>
+                <tbody class="tb">
+
+                </tbody>
+            </table>
+        </div>
+        <div class="container mt-2 ">
+
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+
+    <!-- jquery cdn  -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <!-- custom js -->
+    <!-- <script src="git.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <style>
+        a {
+            color: #fff;
+            font-weight: 350;
+        }
+
+        body {
+            font: 300 14px/1.2 'Public Sans', sans-serif;
+        }
+
+        .container-fluid {
+            max-width: 1024px;
+        }
+
+        #side {
+            height: 20px;
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+        }
+
+        body {
+            background-color: #0d1521;
+        }
+    </style>
+
+    <script>
+        // declarations of the requests variables
+        let request = new XMLHttpRequest();
+        let requestx = new XMLHttpRequest();
+        // all the variables we'll need 
+        let searchBtn = document.getElementById("searchBtn");
+        let error = document.getElementById("error");
+        let searchTerm = ''
+        let glocation;
+        let gactive;
+        let gdeaths;
+        let gconfirmed;
+        let grecovered;
+        let xchart;
+        let xchartx;
+
+
+        // calling the world function to get the latest world's stats
+        world()
+
+        // search button and searchterm init
+        searchBtn.addEventListener("click", e => {
+            e.preventDefault();
+
+            searchTerm = document.getElementById("searchTerm").value;
+            // once the serchTerm is instanciated we call the function getData() to fetch data from the api
+            getData()
+
+
+        })
+        // asynchronous function to get the data from the api
+        // this loads only when called by the search button
+        async function getData() {
+            // we check if the searchterm is empty or not , if it's not we execute what's inside
+            if (searchTerm != "") {
+                // displays the contry's name
+                error.textContent = "Country : " + searchTerm;
+                // calls the api and appends our searchterm at the end of it 
+                await request.open("GET", "https://covid2019-api.herokuapp.com/v2/country/" + searchTerm, true);
+                // once the data is loaded we execute the following
+                request.onload = function () {
+                    // we empty these vars just in case , so we don't get some weird results
+                    glocation = '';
+                    gactive = '';
+                    gdeaths = '';
+                    gconfirmed = '';
+                    grecovered = '';
+                    // we parse the data as it's json format
+                    let data = JSON.parse(this.response);
+                    console.log(data.data)
+
+                    // we init the variables with our data
+                    glocation = data.data.location;
+                    gactive = data.data.active;
+                    gdeaths = data.data.deaths;
+                    gconfirmed = data.data.confirmed;
+                    grecovered = data.data.recovered;
+                    // creates the table that will displays the data
+                    let statusHtml = "";
+                    statusHtml += "<tr>";
+                    statusHtml += "<td>" + data.data.location + "</td>";
+                    statusHtml += "<td>" + data.data.confirmed + "</td>";
+                    statusHtml += "<td>" + data.data.active + "</td>";
+                    statusHtml += "<td>" + data.data.deaths + "</td>";
+                    statusHtml += "<td>" + data.data.recovered + "</td>";
+                    statusHtml += "<td>" + data.dt + "</td>";
+                    statusHtml += "</tr>";
+                    // appends the data into the tbody of table
+                    $("tbody.tb").html(statusHtml);
+                    // calls the function chartIt() so we can draw the chart
+
+                    chartIt(gactive, gconfirmed, grecovered, gdeaths)
+                };
+                // we send the request
+                request.send();
+
+            } else {
+                error.textContent = "Please Fill the search field !";
+            }
+
+        }
+        //displays what country has been searched 
+        setTimeout(function () {
+            document.querySelector("#error").textContent = "Country : " + searchTerm;
+        }, 3000);
+
+        // function to make charts
+        function chartIt(gactive, gconfirmed, grecovered, gdeaths) {
+            //this line is essential , there's a bug with charts js that creates charts everytime you update it ...
+            // this fixes that ! took me two fucking long days to find a way in3l waldiha lklb :@ 
+            if (xchart) {
+                xchart.destroy()
+            }
+            let ctx = document.getElementById('myChart').getContext('2d');
+            xchart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'bar',
+
+                // The data for our dataset
+                data: {
+                    labels: ['Active', 'Confirmed', 'Recovered', 'Deaths'],
+                    datasets: [{
+                        label: 'Statistics of ' + searchTerm,
+                        backgroundColor: [
+
+                            'rgba(255, 60, 255, 1)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(63, 196, 109, 1)',
+                            'rgba(250, 55, 109, 1)'
+                        ],
+                        borderColor: [, 'rgba(255, 60, 255, 1)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(63, 196, 109, 1)',
+                            'rgba(250, 55, 109, 1)'
+                        ],
+                        // the data we got from the api is put here to be charted 
+                        data: [gactive, gconfirmed, grecovered, gdeaths]
+                    }]
+                },
+
+                // Configuration options go here, but there's no need for that 
+                options: {}
+            });
+
+
+        }
+
+        //function that gets the world wide statistics deaths , recoveries etc...
+        // Load by default 
+        async function world() {
+            requestx.open("GET", "https://covid2019-api.herokuapp.com/v2/total", true);
+
+            requestx.onload = function () {
+
+
+                let datax = JSON.parse(this.response);
+                console.log(datax)
+
+
+
+                let statusHtmlx = "";
+                statusHtmlx += "<tr>";
+
+                statusHtmlx += "<td>" + datax.data.confirmed + "</td>";
+                statusHtmlx += "<td>" + datax.data.active + "</td>";
+                statusHtmlx += "<td>" + datax.data.deaths + "</td>";
+                statusHtmlx += "<td>" + datax.data.recovered + "</td>";
+                statusHtmlx += "<td>" + datax.dt + "</td>";
+
+                statusHtmlx += "</tr>";
+
+
+                $("tbody.totaldata").html(statusHtmlx);
+                chartItx(datax.data.confirmed, datax.data.active, datax.data.deaths, datax.data.recovered)
+
+            };
+
+            requestx.send();
+        }
+
+        // function that create the polar chart for the world's stats 
+        function chartItx(X, Y, Z, A) {
+            //this line is essential , there's a bug with charts js that creates charts everytime you update it ...
+            // this fixes that ! took me two fucking long days to find a way in3l waldiha lklb :@ 
+            if (xchartx) {
+                xchartx.destroy()
+            }
+            console.log(X, Y, Z, A)
+            let ctx = document.getElementById('polarArea').getContext('2d');
+            xchartx = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'polarArea',
+
+                // The data for our dataset
+                data: {
+                    labels: ['Active', 'Confirmed', 'Recovered', 'Deaths'],
+                    datasets: [{
+                        label: "World's stats",
+                        backgroundColor: [
+
+                            'rgba(255, 60, 255, 1)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(63, 196, 109, 1)',
+                            'rgba(250, 55, 109, 1)'
+                        ],
+                        borderColor: [, 'rgba(255, 60, 255, 1)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(63, 196, 109, 1)',
+                            'rgba(250, 55, 109, 1)'
+                        ],
+                        data: [X, Y, Z, A]
+                    }]
+                },
+
+                // Configuration options go here
+                options: {}
+            });
+
+
+        }
+    </script>
+</body>
+
+</html>
