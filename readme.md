@@ -3,7 +3,7 @@
 A simple webapp that consumes the 'https://covid2019-api.herokuapp.com/v2/' api 👁️ and displays the details .
 the app is powered by chartJs 📊, datatables 🧾 , bootstrap , javascript , jquery and ajax.
 
-![Screenshot](assets/data.png)
+![Screenshot](/assets/data.png)
 
 ![Screenshot](assets/chartjs.png)
 
