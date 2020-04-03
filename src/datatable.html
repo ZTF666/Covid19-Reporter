@@ -72,7 +72,7 @@
                 <div class="container mt-1">
                     <div class="table-responsive dvData" id="dvData" style="color: black;">
 
-                        <table id="example" class="display table table-dark dataTable">
+                        <table id="example" class="display table table-dark dataTable example">
                             <thead>
                                 <tr>
                                     <th>Location </th>
@@ -86,20 +86,28 @@
 
                             </tbody>
                         </table>
-
-
-
-
                     </div>
+                </div>
+                <div class="container mt-5">
+                    <center><button class="btn btn-warning" id="save">Fire it 🔥</button>
+                        <button class="btn btn-danger" id="delete">Pop it 🧨</button></center>
+
                 </div>
             </div>
 
         </div>
     </div>
 
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
 
 
-
+    <script src="../js/firestore.js"></script>
 
     <style>
         a {
