@@ -12,7 +12,7 @@ let gconfirmed;
 let grecovered;
 let xchart;
 let xchartx;
-
+let disp = document.querySelector('#myChart');
 
 // calling the world function to get the latest world's stats
 world()
@@ -118,10 +118,34 @@ function chartIt(gactive, gconfirmed, grecovered, gdeaths) {
         },
 
         // Configuration options go here, but there's no need for that 
-        options: {}
+        options: {
+            legend: {
+                labels: {
+                    fontColor: "white",
+                    fontSize: 14
+                }
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        fontColor: "white",
+                        fontSize: 14,
+
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontColor: "white",
+                        fontSize: 14,
+
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
     });
 
-
+    disp.setAttribute('style', 'display:visible')
 }
 
 //function that gets the world wide statistics deaths , recoveries etc...
@@ -192,7 +216,32 @@ function chartItx(X, Y, Z, A) {
         },
 
         // Configuration options go here
-        options: {}
+        options: {
+            legend: {
+                labels: {
+                    fontColor: "black",
+                    fontSize: 14
+                }
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        fontColor: "white",
+                        fontSize: 14,
+
+                        beginAtZero: true
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontColor: "white",
+                        fontSize: 14,
+
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
     });
 
 

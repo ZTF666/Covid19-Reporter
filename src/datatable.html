@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Covid-19 report</title>
+    <title>Covid-19 Reports</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- google font -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -64,15 +64,15 @@
 
     <div class="container-fluid mt-3">
         <!-- jumbotron -->
-        <div class="jumbotron jumbotron-fluid bg-secondary text-white">
+        <div class="jumbotron jumbotron-fluid bg-secondary ">
             <div class="container-fluid">
                 <h1 class="display-5">
                     <center id="error">Covid-19 report </center>
                 </h1>
-                <div class="container mt-1">
-                    <div class="table-responsive dvData" id="dvData" style="color: black;">
+                <div class="container mt-1 ">
+                    <div class="table-responsive dvData " id="dvData" style="color: black;">
 
-                        <table id="example" class="display table table-dark dataTable example">
+                        <table id="example" class="display table table-dark dataTable example ">
                             <thead>
                                 <tr>
                                     <th>Location </th>
@@ -97,7 +97,14 @@
 
         </div>
     </div>
-
+    <div id="side">
+        <div class="ztf" style="">
+            <div>
+                <small id="tex">🌛 &copy; BlackHole🌌Studio LLC | Made with 💘 by a 👨‍💻 on a 💻 | 2020 | E.A Nabyl aka
+                    ZTF 🌜</small>
+            </div>
+        </div>
+    </div>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase.js"></script>
@@ -111,8 +118,8 @@
 
     <style>
         a {
-            color: #fff;
-            font-weight: 350;
+            color: rgb(106, 5, 5);
+            /* font-weight: 350; */
         }
 
         body {
@@ -124,7 +131,31 @@
         }
 
         body {
-            background-color: #0d1521;
+
+            background-image: url("../assets/covbg.png");
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+
+        }
+
+        #side {
+            height: 20px;
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            top: 1px;
+        }
+
+        .ztf {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            background-color: transparent;
+            color: aliceblue;
+            font-size: 16px;
         }
     </style>
 </body>
