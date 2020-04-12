@@ -1,13 +1,6 @@
 // Your web app's Firebase configuration
 var firebaseConfig = {
-    apiKey: "AIzaSyBuE7ZlexxZD4Dy11z5OrOVlCVUtFG5oOA",
-    authDomain: "datasaver-42281.firebaseapp.com",
-    databaseURL: "https://datasaver-42281.firebaseio.com",
-    projectId: "datasaver-42281",
-    storageBucket: "datasaver-42281.appspot.com",
-    messagingSenderId: "887361647383",
-    appId: "1:887361647383:web:e3824a496b6486e060bd52",
-    measurementId: "G-370H79VF2M"
+   'YOUR FIRESTORE INFO GOES HERE'
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
