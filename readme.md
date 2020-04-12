@@ -39,6 +39,6 @@ Firestore.js : you may wanna add your own config
 ### Notice
 
 ```
-You can use the project , modify it in any way you wish as long as you credit me !
+You can use the project , modify it in any way you wish , credit is appreciated but not mandatory ❤️ !
 you can reach me @ZTF666@protonmail.ch
 ```
