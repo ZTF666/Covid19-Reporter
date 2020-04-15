@@ -1,6 +1,6 @@
 // Your web app's Firebase configuration
 var firebaseConfig = {
-   'YOUR FIRESTORE INFO GOES HERE'
+   'YOUR_FIRESTORE_CONFIG'
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

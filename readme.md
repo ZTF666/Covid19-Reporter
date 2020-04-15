@@ -26,6 +26,13 @@ Make sure to change the the collection's name from 'CURRENT/' to yours.
 or
 In case you wanna keep it , just create a collection and name it Current .
 ```
+## Data exporting
+```
+You can export the data as a CSV or EXCEL file.
+```
+![Screenshot](/assets/csv.png)
+![Screenshot](/assets/xlsx.png)
+
 
 ## Project setup
 
