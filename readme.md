@@ -1,7 +1,7 @@
 # Covid-19 Reporter
 
 A simple webapp that consumes the 'https://covid2019-api.herokuapp.com/v2/' api 👁️ and displays the details .
-the app is developped using chartJs , datatables , bootstrap , javascript and Firebase .
+the app is developed using chartJs , datatables , bootstrap , javascript and Firebase .
 
 ![Screenshot](assets/index.png)
 
